@@ -10,3 +10,16 @@
 ## Fichiers à éditer
 - src/main/java/com/jakarta2/udbl/jakartamission2/beans/NavigationBean.java
 - src/main/webapp/lieu.xhtml
+
+# TODO: Ajouter la vérification d'existence d'utilisateur avant insertion
+
+## Étapes à compléter
+
+- [ ] Ajouter la méthode `trouverUtilisateurParUsername` dans UtilisateurEntrepriseBean.java.
+- [ ] Modifier `ajouterUtilisateurEntreprise` pour vérifier si l'utilisateur existe avant insertion.
+- [ ] Modifier `UtilisateurBean.ajouterUtilisateur` pour gérer l'exception et afficher le message d'erreur.
+- [ ] Tester l'application pour s'assurer que la vérification fonctionne.
+
+## Fichiers à éditer
+- src/main/java/com/jakarta2/udbl/jakartamission2/business/UtilisateurEntrepriseBean.java
+- src/main/java/com/jakarta2/udbl/jakartamission2/beans/UtilisateurBean.java
