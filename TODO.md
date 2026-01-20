@@ -1,25 +1,12 @@
-# TODO: Ajouter l'option de modifier un lieu
+# TODO List
 
-## Étapes à compléter
+- [x] Fix 404 error on "À propos" button click
+  - Issue: HTTP Status 404 - /Pages/index.xhtml Not Found in ExternalContext as a Resource
+  - Root cause: ProfileBean.deconnecter() method was returning "redirect:/index.xhtml" which is invalid in JSF
+  - Fix: Changed deconnecter() to use FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml") instead of returning a string
+  - Status: Completed
 
-- [x] Ajouter la méthode `sauvegarderEdition()` dans NavigationBean.java pour enregistrer les modifications en appelant `modifierLieu`.
-- [x] Modifier lieu.xhtml pour ajouter un bouton "Editer" dans la colonne Actions du tableau.
-- [x] Rendre le formulaire conditionnel : changer le titre ("Ajouter un Lieu" vs "Modifier un Lieu"), le texte du bouton ("Ajouter" vs "Modifier"), et ajouter un bouton "Annuler".
-- [x] Tester l'application pour s'assurer que l'édition fonctionne.
-
-## Fichiers à éditer
-- src/main/java/com/jakarta2/udbl/jakartamission2/beans/NavigationBean.java
-- src/main/webapp/lieu.xhtml
-
-# TODO: Ajouter la vérification d'existence d'utilisateur avant insertion
-
-## Étapes à compléter
-
-- [ ] Ajouter la méthode `trouverUtilisateurParUsername` dans UtilisateurEntrepriseBean.java.
-- [ ] Modifier `ajouterUtilisateurEntreprise` pour vérifier si l'utilisateur existe avant insertion.
-- [ ] Modifier `UtilisateurBean.ajouterUtilisateur` pour gérer l'exception et afficher le message d'erreur.
-- [ ] Tester l'application pour s'assurer que la vérification fonctionne.
-
-## Fichiers à éditer
-- src/main/java/com/jakarta2/udbl/jakartamission2/business/UtilisateurEntrepriseBean.java
-- src/main/java/com/jakarta2/udbl/jakartamission2/beans/UtilisateurBean.java
+- [x] Add logout and profile features to a_propos.xhtml
+  - Created src/main/webapp/a_propos.xhtml with navbar containing logout button and profile display/modification sections
+  - Includes user profile view, description editing, and password change functionality
+  - Status: Completed

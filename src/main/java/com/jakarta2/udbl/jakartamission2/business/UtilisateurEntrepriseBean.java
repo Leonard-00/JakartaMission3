@@ -67,4 +67,42 @@ public class UtilisateurEntrepriseBean {
             return null;
         }
     }
+    
+    public Utilisateur authentifier(String email, String password){
+        Utilisateur utilisateur = this.trouverUtilisateurParEmail(email);
+        if (utilisateur != null && this.verifierMotDePasse(password, utilisateur.getPassword())){
+            return utilisateur;
+            }
+        return null;
+        
+    }
+    
+    public boolean verifierMotDePasse(String password, String hashedPassword) { 
+        return BCrypt.checkpw(password, hashedPassword); 
+    }
+    
+    @Transactional
+    public void modifierUtilisateur(Utilisateur utilisateur) throws Exception {
+        if (utilisateur != null && utilisateur.getId() != null) {
+            em.merge(utilisateur);
+        } else {
+            throw new Exception("Utilisateur invalide");
+        }
+    }
+    
+    @Transactional
+    public void modifierMotDePasse(Long userId, String nouveauMotDePasse) throws Exception {
+        Utilisateur utilisateur = em.find(Utilisateur.class, userId);
+        if (utilisateur != null) {
+            String hashedPassword = BCrypt.hashpw(nouveauMotDePasse, BCrypt.gensalt());
+            utilisateur.setPassword(hashedPassword);
+            em.merge(utilisateur);
+        } else {
+            throw new Exception("Utilisateur non trouvé");
+        }
+    }
+
+//    private boolean verifierMotDePasse(String password, String password0) {
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+//    }
 }

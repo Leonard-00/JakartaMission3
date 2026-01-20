@@ -50,12 +50,11 @@ public class NavigationBean implements Serializable {
             lieux = new java.util.ArrayList<>();
         }
     }
-
     public void voirApropos(){
         try {
             FacesContext.getCurrentInstance().getExternalContext()
-                    .redirect("a_propos.xhtml");
-        } catch (IOException e) {
+                    .redirect("Pages/a_propos.xhtml");
+        } catch(IOException e){
             e.printStackTrace();
         }
     }
@@ -63,7 +62,7 @@ public class NavigationBean implements Serializable {
     public void ajouterLieu() {
         try {
             FacesContext.getCurrentInstance().getExternalContext()
-                    .redirect("lieu.xhtml");
+                    .redirect("Pages/lieu.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -92,7 +91,7 @@ public class NavigationBean implements Serializable {
     public void retourAccueil() {
         try {
             FacesContext.getCurrentInstance().getExternalContext()
-                    .redirect("home.xhtml");
+                    .redirect("../home.xhtml");
         } catch (IOException e) {
             e.printStackTrace();
         }
